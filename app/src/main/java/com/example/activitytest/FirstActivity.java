@@ -2,6 +2,7 @@ package com.example.activitytest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +35,19 @@ public class FirstActivity extends AppCompatActivity {
         }
         return true;
     }
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        switch (requestCode){
+            case 1:
+                if(resultCode == RESULT_OK){
+                    String returnedData = data.getStringExtra("data_return");
+                    Log.d(TAG, ""+returnedData);
+                }
+                break;
+            default:
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +65,15 @@ public class FirstActivity extends AppCompatActivity {
 //                Intent intent = new Intent("com.example.activitytest.ACTION_START");
 //                intent.addCategory("com.example.activitytest.MY_CATEGORY");
                 /*2.隐式Intent响应android系统内置动作*/
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://www.baidu.com"));
-                startActivity(intent);
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.setData(Uri.parse("http://www.baidu.com"));
+//                startActivity(intent);
+
+                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+                startActivityForResult(intent,1);
+
             }
+
         });
 
 
