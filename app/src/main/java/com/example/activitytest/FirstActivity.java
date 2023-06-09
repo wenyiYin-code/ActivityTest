@@ -3,6 +3,7 @@ package com.example.activitytest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -46,7 +47,12 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View v){
                 Toast.makeText(FirstActivity.this,"you clicked button1 and start the SecondActivity",
                         Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+                /*1.隐式Intent响应SecondActivity活动跳转*/
+//                Intent intent = new Intent("com.example.activitytest.ACTION_START");
+//                intent.addCategory("com.example.activitytest.MY_CATEGORY");
+                /*2.隐式Intent响应android系统内置动作*/
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://www.baidu.com"));
                 startActivity(intent);
             }
         });
