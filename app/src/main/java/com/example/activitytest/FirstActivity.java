@@ -2,6 +2,7 @@ package com.example.activitytest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -43,8 +44,10 @@ public class FirstActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(FirstActivity.this,"you clicked button1",
+                Toast.makeText(FirstActivity.this,"you clicked button1 and start the SecondActivity",
                         Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+                startActivity(intent);
             }
         });
 
