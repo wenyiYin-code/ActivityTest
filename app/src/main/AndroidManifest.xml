@@ -24,6 +24,7 @@
         </activity>
         <activity
             android:name=".SecondActivity"
+            android:launchMode="singleInstance"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.activitytest.ACTION_START" />
@@ -34,6 +35,7 @@
         </activity>
         <activity
             android:name=".FirstActivity"
+            android:launchMode="singleTask"
             android:exported="true"
             android:label="This is FirstActivity">
             <intent-filter>
